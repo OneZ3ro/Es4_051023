@@ -1,4 +1,4 @@
-package entities.es1.enums;
+package entities.enums;
 
 public enum Livello {
     OPERIAIO, IMPIEGATO, QUADRO, DIRIGENTE, ERRORE

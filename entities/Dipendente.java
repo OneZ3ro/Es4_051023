@@ -1,13 +1,13 @@
-package entities.es1;
+package entities;
 
-import entities.es1.enums.Dipartimento;
-import entities.es1.enums.Livello;
+import entities.enums.Dipartimento;
+import entities.enums.Livello;
 
 public class Dipendente {
     public double stipendioBase = 1000;
     private long matricola;
     private double stipendio;
-    private double importoOrarioStraordinario;
+    private int importoOrarioStraordinario;
     private Livello livello;
     private Dipartimento dipartimento;
 
@@ -21,7 +21,7 @@ public class Dipendente {
 
     public Dipendente(){}
 
-    public void setDipendente(long matricola, double stipendio, double importoOrarioStraordinario, Livello livello, Dipartimento dipartimento) {
+    public void setDipendente(long matricola, double stipendio, int importoOrarioStraordinario, Livello livello, Dipartimento dipartimento) {
         this.matricola = matricola;
         this.stipendio = stipendio;
         this.importoOrarioStraordinario = importoOrarioStraordinario;
@@ -29,17 +29,29 @@ public class Dipendente {
         this.dipartimento = dipartimento;
     }
 
-    public void promuovi(Livello livello) {
+    public void promuovi(Livello livello, Dipendente dipendente) {
         if (livello == Livello.OPERIAIO) {
             this.livello = Livello.IMPIEGATO;
             this.stipendioBase = stipendioBase * 1.2;
+            this.stipendio = stipendioBase;
+            System.out.println(dipendente);
+
         } else if (livello == Livello.IMPIEGATO) {
             this.livello = Livello.QUADRO;
             this.stipendioBase = stipendioBase * 1.5;
+            this.stipendio = stipendioBase;
+            System.out.println(dipendente);
+
+
         } else if (livello == Livello.QUADRO) {
             this.livello = Livello.DIRIGENTE;
             this.stipendioBase = stipendioBase * 2;
+            this.stipendio = stipendioBase;
+            System.out.println(dipendente);
+
+
         } else if (livello == Livello.DIRIGENTE) {
+            this.stipendioBase = stipendioBase * 2;
             this.livello = Livello.DIRIGENTE;
             System.out.println("Messaggio di errore");
         }
@@ -53,7 +65,7 @@ public class Dipendente {
         return stipendio;
     }
 
-    public double getImportoOrarioStraordinario() {
+    public int getImportoOrarioStraordinario() {
         return importoOrarioStraordinario;
     }
 
