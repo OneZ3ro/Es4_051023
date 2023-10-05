@@ -43,7 +43,9 @@ public class FirstExercise {
         Dipartimento dipartimento = sceltaDipartimento(choose2);
         if (choose2 == 1 || choose2 == 2 || choose2 == 3) {
             dipendente.setDipendenteBase(matricola, dipartimento);
-            System.out.println(dipendente);
+            stampaDatiDipendente(dipendente);
+            dipendente.promuovi(dipendente.getLivello());
+            stampaDatiDipendente(dipendente);
         } else {
             System.out.println("Non hai scelto uno dei possibili dipartimenti. Riprova");
         }
@@ -55,7 +57,9 @@ public class FirstExercise {
         Livello livello = sceltaLivello(choose3);
         if ((choose2 == 1 || choose2 == 2 || choose2 == 3) && (choose3 == 1 || choose3 == 2 || choose3 == 3 || choose3 == 4)) {
             dipendente.setDipendente(matricola, stipendio, importoOrarioStraordinario, livello, dipartimento);
-            System.out.println(dipendente);
+            stampaDatiDipendente(dipendente);
+            dipendente.promuovi(dipendente.getLivello());
+            stampaDatiDipendente(dipendente);
         } else {
             System.out.println("Non hai scelto uno dei possibili dipartimenti e/o non hai scelto uno dei possibili livelli. Riprova");
         }
@@ -79,4 +83,9 @@ public class FirstExercise {
             default -> Livello.ERRORE;
         };
     }
+
+    public static void stampaDatiDipendente(Dipendente dipendente){
+        System.out.println(dipendente);
+    }
+
 }

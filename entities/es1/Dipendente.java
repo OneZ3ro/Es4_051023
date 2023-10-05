@@ -28,13 +28,50 @@ public class Dipendente {
         this.livello = livello;
         this.dipartimento = dipartimento;
     }
+
+    public void promuovi(Livello livello) {
+        if (livello == Livello.OPERIAIO) {
+            this.livello = Livello.IMPIEGATO;
+            this.stipendioBase = stipendioBase * 1.2;
+        } else if (livello == Livello.IMPIEGATO) {
+            this.livello = Livello.QUADRO;
+            this.stipendioBase = stipendioBase * 1.5;
+        } else if (livello == Livello.QUADRO) {
+            this.livello = Livello.DIRIGENTE;
+            this.stipendioBase = stipendioBase * 2;
+        } else if (livello == Livello.DIRIGENTE) {
+            this.livello = Livello.DIRIGENTE;
+            System.out.println("Messaggio di errore");
+        }
+    }
+
+    public long getMatricola() {
+        return matricola;
+    }
+
+    public double getStipendio() {
+        return stipendio;
+    }
+
+    public double getImportoOrarioStraordinario() {
+        return importoOrarioStraordinario;
+    }
+
+    public Livello getLivello() {
+        return livello;
+    }
+
+    public Dipartimento getDipartimento() {
+        return dipartimento;
+    }
+
     @Override
     public String toString() {
         return "Dipendente { " +
                 "stipendioBase: " + stipendioBase +
                 ", matricola: " + matricola +
                 ", stipendio: " + stipendio +
-                ", importoOrarioStraordinario: " + importoOrarioStraordinario +
+                "$, importoOrarioStraordinario: " + importoOrarioStraordinario +
                 ", livello: " + livello +
                 ", dipartimento: " + dipartimento +
                 " }";
